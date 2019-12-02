@@ -23,7 +23,7 @@ RUN apt-get update && apt-get install -y \
 ADD php.ini /usr/local/etc/php/conf.d/40-custom.ini
 
 # Указываем рабочую директорию для PHP
-WORKDIR /var/www/app
+WORKDIR /var/www/app/app
 
 # Куда же без composer'а.
 RUN curl -sS https://getcomposer.org/installer | php -- \
@@ -31,6 +31,10 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
         --install-dir=/usr/local/bin && \
         echo "alias composer='composer'" >> /root/.bashrc && \
         composer install
+
+
+# Указываем рабочую директорию для PHP
+WORKDIR /var/www/app
 
 # Запускаем контейнер
 # Из документации: The main purpose of a CMD is to provide defaults for an executing container. These defaults can include an executable, 
