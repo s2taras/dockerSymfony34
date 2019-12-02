@@ -17,12 +17,12 @@ services:
       - ./docker/nginx:/etc/nginx/conf.d
       - ./docker/logs:/var/log/nginx
     ports:
-      - "88:80"
-      - "444:443"
+      - "80:80"
+      - "443:443"
   mysql:
     image: mysql:8
     ports:
-      - "3308:3306"
+      - "3306:3306"
     volumes:
       - ./docker/mysql:/var/lib/mysql
     environment:
