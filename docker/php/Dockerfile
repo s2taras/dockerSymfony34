@@ -26,7 +26,7 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 ADD php.ini /usr/local/etc/php/conf.d/40-custom.ini
 
 # Указываем рабочую директорию для PHP
-WORKDIR /var/www/app
+# WORKDIR /var/www/app
 
 RUN composer install
 
