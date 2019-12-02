@@ -1,0 +1,6 @@
+app/vendor/
+app/var/cache/
+app/tests/
+app/var/logs/
+docker/mysql/
+docker/logs/

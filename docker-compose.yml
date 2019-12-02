@@ -1,0 +1,29 @@
+version: '3'
+services:
+  php:
+    build: ./docker/php
+    environment:
+      TIMEZONE: Europe/Kiev
+    volumes:
+      - ./app:/var/www/app
+    links:
+      - mysql
+  nginx:
+    image: nginx:latest
+    links:
+      - php
+    volumes:
+      - ./app:/var/www/app
+      - ./docker/nginx:/etc/nginx/conf.d
+      - ./docker/logs:/var/log/nginx
+    ports:
+      - "88:80"
+      - "444:443"
+  mysql:
+    image: mysql:8
+    ports:
+      - "3308:3306"
+    volumes:
+      - ./docker/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
